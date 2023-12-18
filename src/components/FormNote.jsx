@@ -7,10 +7,7 @@ function FormNote({ handleNoteSubmit }) {
   });
 
   const handleInputChange = (e) => {
-    // console.log(name,value )
     const { name, value } = e.target;
-    // console.log(e.target)
-
     setFormData({
       ...formData,
       [name]: value,
@@ -19,8 +16,6 @@ function FormNote({ handleNoteSubmit }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    console.log("Form submitted with state:", formData);
 
     handleNoteSubmit(formData);
     e.target.reset();
@@ -36,7 +31,7 @@ function FormNote({ handleNoteSubmit }) {
               name="NoteTitle"
               type="text"
               id="title"
-              className="block border-2  border-sky-200 rounded-sm w-80 "
+              className="block border-2  border-sky-200 bg-gray-100   rounded-sm w-80 "
               value={formData.NoteTitle}
               onChange={handleInputChange}
               placeholder=" Note title"

@@ -10,7 +10,6 @@ function App() {
   const [notes, setNotes] = useState(getInitialData());
 
   const handleSearch = (query) => {
-    // Perform the search logic
     const filteredNotes = notes.filter((note) => {
       return (
         note.title.toLowerCase().includes(query.toLowerCase()) ||
@@ -22,7 +21,6 @@ function App() {
   };
 
   const tryHandleDeleteNote = (id) => {
-    console.log("test");
     setNotes(notes.filter((note) => note.id !== id));
   };
 
@@ -31,40 +29,27 @@ function App() {
 
     const newId = latestId + 1;
 
-    const currentDate = new Date().toISOString().slice(0, 10);
-
     const formattedNewNote = {
       id: newId,
       title: newNote.NoteTitle,
       body: newNote.NoteContent,
-      createdAt: currentDate,
+      createdAt: new Date(),
       archive: newNote.archive || false,
     };
-    console.log(formattedNewNote);
     setNotes([...notes, formattedNewNote]);
-    console.log(notes);
   };
 
   return (
     <div className=" w-screen h-screen ">
       <HeaderPage onSearch={handleSearch} />
-      {/* <HeaderPage /> */}
       <hr></hr>
-      {/* top */}
-      <div className="flex flex-col w-full h-full ">
-        <NoteFormContainer handleNoteSubmit={handleNewNotes} />
-        {/* bottom */}
-        {notes.length != 0 ? (
-          <NoteCardContainer
-            notes={notes}
-            handleDeletedNote={tryHandleDeleteNote}
-          ></NoteCardContainer>
-        ) : (
-          <div>
-            <p>Tidak ada Notes</p>
-          </div>
-        )}
-      </div>
+
+      {/* <NoteFormContainer handleNoteSubmit={handleNewNotes} /> */}
+
+      <NoteCardContainer
+        notes={notes}
+        handleDeletedNote={tryHandleDeleteNote}
+      ></NoteCardContainer>
     </div>
   );
 }

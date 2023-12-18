@@ -6,21 +6,32 @@ function NoteCardContainer(props) {
   const collectDeletedNote = (id) => {
     //
     const deletedNote = notes.find((note) => note.id === id);
-    console.log("deletedNote", deletedNote);
+
     handleDeletedNote(id);
     // getDeletedNote(id); // Call the function passed as a prop with the note id
   };
   return (
-    <div className="basis-3/5 flex flex-row   flex-wrap  justify-center max-h-96 ">
-      {notes.map((note) => (
-        <NoteCard
-          title={note.title}
-          content={note.body}
-          dateStamp={note.createdAt}
-          id={note.id}
-          deleteNote={collectDeletedNote}
-        />
-      ))}
+    <div
+      className="basis-3/5 flex flex-row   flex-wrap  justify-center 
+    
+    max-h-96 "
+    >
+      {notes.length != 0 ? (
+        notes.map((note) => (
+          <NoteCard
+            key={note.id}
+            title={note.title}
+            content={note.body}
+            dateStamp={note.createdAt}
+            id={note.id}
+            deleteNote={collectDeletedNote}
+          />
+        ))
+      ) : (
+        <div>
+          <p className="text-xl">Tidak ada Notes</p>
+        </div>
+      )}
     </div>
   );
 }

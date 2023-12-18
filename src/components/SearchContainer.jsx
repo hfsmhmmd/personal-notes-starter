@@ -9,15 +9,18 @@ function SearchContainer({ onSearch }) {
   };
 
   return (
-    <form onSubmit={collectQuery}>
-      <input
-        type="text"
-        placeholder="Search notes..."
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
-      <button type="submit">Search</button>
-    </form>
+    <div className="mt-2">
+      <form onSubmit={collectQuery}>
+        <input
+          type="text"
+          placeholder="Search notes..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="w-32"
+        />
+        <button type="submit">search</button>
+      </form>
+    </div>
   );
 }
 

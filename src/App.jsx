@@ -1,3 +1,4 @@
+import { PlusOutlined, CloseOutlined } from "@ant-design/icons";
 import NoteFormContainer from "./components/NoteFormContainer";
 import HeaderPage from "./components/HeaderPage";
 
@@ -8,6 +9,7 @@ function App() {
   const title = "None";
   const content = "ini conteeeent";
   const [notes, setNotes] = useState(getInitialData());
+  const [openForm, setOpenForm] = useState();
 
   const handleSearch = (query) => {
     const filteredNotes = notes.filter((note) => {
@@ -43,9 +45,21 @@ function App() {
     <div className=" w-screen h-screen ">
       <HeaderPage onSearch={handleSearch} />
       <hr></hr>
+      {openForm ? (
+        <NoteFormContainer handleNoteSubmit={handleNewNotes} />
+      ) : null}
 
-      {/* <NoteFormContainer handleNoteSubmit={handleNewNotes} /> */}
-
+      <div className="fixed bottom-4 right-3">
+        {openForm ? (
+          <button className="btn btn-circle" onClick={() => setOpenForm(false)}>
+            <CloseOutlined />
+          </button>
+        ) : (
+          <button className="btn btn-circle" onClick={() => setOpenForm(true)}>
+            <PlusOutlined />
+          </button>
+        )}
+      </div>
       <NoteCardContainer
         notes={notes}
         handleDeletedNote={tryHandleDeleteNote}

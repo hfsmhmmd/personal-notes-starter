@@ -47,7 +47,7 @@ function FormNote({ handleNoteSubmit }) {
               value={formData.NoteContent}
               onChange={handleInputChange}
               placeholder=" Describe your Note"
-              className="border-2 border-sky-200  rounded-sm  w-80  h-48 bg-gray-100  text-gray-700"
+              className="border-2 border-sky-200  rounded-sm  w-80  h-96 bg-gray-100  text-gray-700"
             ></textarea>
           </div>
 
